@@ -4,246 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nitin Kumar | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0a0a0a;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* NAVBAR */
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: cyan;
-    }
-
-    .logo {
-      font-weight: 600;
-      font-size: 22px;
-    }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-    }
-
-    .hero span {
-      color: cyan;
-    }
-
-    .hero p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 25px;
-      border: none;
-      background: cyan;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 25px;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-    }
-
-    /* TYPING TEXT */
-    .typing {
-      border-right: 3px solid cyan;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(30) infinite, blink 0.7s infinite;
-    }
-
-    @keyframes typing {
-      0% { width: 0 }
-      50% { width: 100% }
-      100% { width: 0 }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .skill {
-      background: #111;
-      padding: 10px 20px;
-      border-radius: 20px;
-      border: 1px solid cyan;
-    }
-
-    .project-card {
-      background: #111;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-    }
-
-    /* STARS BACKGROUND */
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    /* RESPONSIVE */
-    @media(max-width: 768px) {
-      nav {
-        flex-direction: column;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-    }
-    .footer {
-  background: #000;
-  padding: 40px 20px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: auto;
-  gap: 20px;
-}
-
-.footer-left h3 {
-  color: cyan;
-}
-
-.footer-center p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-right a {
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-
-.footer-right a:hover {
-  color: cyan;
-  transform: translateX(5px);
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
-@media(max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .footer-right {
-    flex-direction: row;
-    gap: 15px;
-  }
-}
+    
   </style>
 </head>
 <body>
@@ -286,9 +54,29 @@
 
 <section id="projects">
   <h2>Projects</h2>
-  <div class="project-card">Portfolio Website</div>
+  <div class="project-card">E-Commerce Website</div>
   <div class="project-card">Python Projects</div>
 </section>
+<div class="project-card">
+  <img src="ecommerce.png" alt="Ecommerce Project">
+  <h3>E-Commerce Website</h3>
+  
+  <p>
+    A fully responsive e-commerce website with product listings, cart system,
+    and modern UI design.
+  </p>
+
+  <div class="tech">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+  </div>
+
+  <div class="project-links">
+    <a href="https://nitin6666.github.io/ecommerce/" target="_blank">Live Demo</a>
+    <a href="https://github.com/Nitin6666/ecommerce" target="_blank">GitHub</a>
+  </div>
+</div>
 
 <section id="contact">
   <h2>Contact</h2>
@@ -307,22 +95,21 @@
     </div>
 
     <div class="footer-center">
-      <p>Email: nitin@email.com</p>
+      <p>Email: technicalnitin70@gmail.com</p>
       <p>Location: India</p>
     </div>
-
+    </div>
     <div class="footer-right">
-      <a href="https://instagram.com/yourusername" target="_blank">
+      <a href="https://www.instagram.com/techie_nitin_/" target="_blank">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="https://github.com/yourusername" target="_blank">
+      <a href="https://github.com/Nitin6666" target="_blank">
         <i class="fab fa-github"></i>
       </a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">
+      <a href="https://www.linkedin.com/in/nitin-kumar-33743428b/" target="_blank">
         <i class="fab fa-linkedin"></i>
       </a>
-    </div>
-
+    
 
   </div>
 
