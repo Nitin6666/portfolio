@@ -4,6 +4,90 @@
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+
+/* CENTER BOX */
+.loader-box {
+  width: 90%;
+  max-width: 600px;
+  color: #00ffcc;
+  font-family: monospace;
+}
+
+/* TITLE */
+.title {
+  font-size: clamp(18px, 4vw, 32px);
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* TERMINAL TEXT */
+#terminal {
+  font-size: clamp(12px, 2.5vw, 16px);
+  line-height: 1.6;
+  min-height: 120px;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #222;
+  margin: 20px 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #00ffcc;
+  animation: loading 3s linear forwards;
+}
+
+/* NAME */
+.name {
+  font-size: clamp(20px, 5vw, 36px);
+  font-family: cursive;
+  text-shadow: 0 0 15px #00ffcc;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ROLES */
+.roles {
+  font-size: clamp(12px, 2.5vw, 16px);
+  opacity: 0.8;
+}
+
+/* MAIN CONTENT HIDDEN INITIALLY */
+#main-content {
+  display: none;
+}
+
+/* ANIMATIONS */
+@keyframes loading {
+  to {
+    width: 100%;
+  }
+}
+
+/* FADE OUT */
+#preloader.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
 html{
   scroll-behavior: smooth;
   scroll-padding-top:80px;

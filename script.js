@@ -1,26 +1,76 @@
-const toggle = document.querySelector(".menu-toggle");
+// ===== DOM READY =====
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===== NAVBAR TOGGLE =====
+  const toggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
-// Toggle menu
-toggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  navLinks.classList.toggle("active");
-  toggle.classList.toggle("active");
-});
+  if (toggle && navLinks) {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle("active");
+      toggle.classList.toggle("active");
+    });
 
-// Close when clicking outside
-document.addEventListener("click", (e) => {
-  if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
-    navLinks.classList.remove("active");
-    toggle.classList.remove("active");
+    document.addEventListener("click", (e) => {
+      if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
+        navLinks.classList.remove("active");
+        toggle.classList.remove("active");
+      }
+    });
   }
-});
-  // ADVANCED PARTICLE STAR SYSTEM
+
+  // ===== TYPING EFFECT (HERO SECTION) =====
+  const roles = [
+    "Frontend Developer",
+    "Python Programmer",
+    "Tech Enthusiast",
+    "Future Software Engineer"
+  ];
+
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  const typingElement = document.getElementById("typing-text");
+
+  function typeEffect() {
+    if (!typingElement) return;
+
+    const currentRole = roles[roleIndex];
+
+    charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+
+    typingElement.textContent = currentRole.substring(0, charIndex);
+
+    let speed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      speed = 1500;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      speed = 500;
+    }
+
+    setTimeout(typeEffect, speed);
+  }
+
+  typeEffect();
+
+  // ===== PARTICLE BACKGROUND =====
   const canvas = document.getElementById("stars");
+  if (!canvas) return;
+
   const ctx = canvas.getContext("2d");
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
 
   let particles = [];
   const PARTICLE_COUNT = 120;
@@ -38,7 +88,6 @@ document.addEventListener("click", (e) => {
       this.x += this.speedX;
       this.y += this.speedY;
 
-      // wrap around edges
       if (this.x < 0) this.x = canvas.width;
       if (this.x > canvas.width) this.x = 0;
       if (this.y < 0) this.y = canvas.height;
@@ -79,31 +128,7 @@ document.addEventListener("click", (e) => {
     }
   }
 
-  let mouse = {
-    x: null,
-    y: null,
-    radius: 120
-  };
-
-  window.addEventListener("mousemove", function (event) {
-    mouse.x = event.x;
-    mouse.y = event.y;
-  });
-
-  function mouseEffect() {
-    particles.forEach(p => {
-      let dx = mouse.x - p.x;
-      let dy = mouse.y - p.y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < mouse.radius) {
-        p.x -= dx / 20;
-        p.y -= dy / 20;
-      }
-    });
-  }
-
-  function animateParticles() {
+  function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach(p => {
@@ -112,57 +137,15 @@ document.addEventListener("click", (e) => {
     });
 
     connectParticles();
-    mouseEffect();
-
-    requestAnimationFrame(animateParticles);
+    requestAnimationFrame(animate);
   }
 
   window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    resizeCanvas();
     initParticles();
   });
 
   initParticles();
-  animateParticles();
+  animate();
 
-
-  // ADVANCED TYPING ANIMATION (MULTI-ROLE LOOP)
-  const roles = [
-    "Frontend Developer",
-    "Python Programmer",
-    "Tech Enthusiast",
-    "Future Software Engineer"
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingElement = document.getElementById("typing-text");
-
-  function typeEffect() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      charIndex--;
-    } else {
-      charIndex++;
-    }
-
-    typingElement.textContent = currentRole.substring(0, charIndex);
-
-    let speed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      speed = 1500; // pause at full text
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      speed = 500;
-    }
-
-    setTimeout(typeEffect, speed);
-  }
-
-  typeEffect();
+});
