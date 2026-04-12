@@ -15,74 +15,98 @@
 <canvas id="stars"></canvas>
 
 <header>
-  <nav id="nav">
-    <h2 id="logo" class="logo">
-      Nitin
-    </h2>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <nav class="navbar">
+  <h2 class="logo" id="logo">
+    <a href="#home">
+      <img src="nk_logo1.jpg" alt="NK">
+    </a>
+  </h2>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <a href="#home" class="nav-anchor">
+      <li>Home</li>
+    </a>
+    <a href="#about" class="nav-anchor">
+      <li>About</li>
+    </a>
+    <a href="#skills" class="nav-anchor">
+      <li>Skills</li>
+    </a>
+    <a href="#projects" class="nav-anchor">
+      <li>Projects</li>
+    </a>
+    <a href="#contact" class="nav-anchor">
+      <li>Contact</li>
+    </a>
+  </ul>
+</nav>
 </header>
+<main>
+  <section id="home" class="hero">
+    <div id="img-card" class="nitin_img">
+      <img src="nitin.jpg" alt="nitin Image" id="nitin_img">
+    </div>
+    
 
-<section id="home" class="hero">
-  <h1>Hello, I'm <span>Nitin Kumar</span></h1>
-  <p id="typing-text"></p>
-  <button onclick="scrollToSection('contact')">Hire Me</button>
-</section>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a motivated student passionate about web development and programming.</p>
-</section>
-
-<section id="skills">
-  <h2>My Skills</h2>
-  <div class="skills-container">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">JavaScript</div>
-    <div class="skill">Python</div>
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project-card">E-Commerce Website</div>
-  <div class="project-card">Python Projects</div>
-</section>
-<div class="project-card">
-  <img src="ecommerce.png" alt="Ecommerce Project" height="200px" width="400px">
-  <h3>E-Commerce Website</h3>
+    <h1>Hello, I'm <span>Nitin Kumar</span></h1>
+    <p id="typing-text"></p>
+    <button onclick="scrollToSection('contact')">Hire Me</button>
+  </section>
   
-  <p>
-    A fully responsive e-commerce website with product listings, cart system,
-    and modern UI design.
-  </p>
-
-  <div class="tech">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a motivated student passionate about web development and programming.</p>
+  </section>
+  
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
+  
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">E-Commerce Website</div>
+    <div class="project-card">Python Projects</div>
+  </section>
+  <div class="project-card">
+    <img src="ecommerce.png" alt="Ecommerce Project" height="200px" width="400px">
+    <h3>E-Commerce Website</h3>
+    
+    <p>
+      A fully responsive e-commerce website with product listings, cart system,
+      and modern UI design.
+    </p>
+  
+    <div class="tech">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+    </div>
+  
+    <div class="project-links">
+      <a href="https://nitin6666.github.io/ecommerce/" target="_blank">Live Demo</a>
+      <a href="https://github.com/Nitin6666/ecommerce" target="_blank">GitHub</a>
+    </div>
   </div>
+  
+  <section id="contact">
+    <h2>Contact</h2>
+    <input placeholder="Name">
+    <input placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
+  </section>
+</main>
 
-  <div class="project-links">
-    <a href="https://nitin6666.github.io/ecommerce/" target="_blank">Live Demo</a>
-    <a href="https://github.com/Nitin6666/ecommerce" target="_blank">GitHub</a>
-  </div>
-</div>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <input placeholder="Name">
-  <input placeholder="Email">
-  <textarea placeholder="Message"></textarea>
-  <button>Send</button>
-</section>
 
 <footer class="footer">
   <div class="footer-container">
@@ -113,164 +137,7 @@
 
   <p class="footer-bottom">© 2026 Nitin Kumar | All Rights Reserved</p>
 </footer>
-
-<script>
-  function scrollToSection(id) {
-    document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-  }
-
-  // ADVANCED PARTICLE STAR SYSTEM
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  let particles = [];
-  const PARTICLE_COUNT = 120;
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2;
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.speedY = (Math.random() - 0.5) * 0.5;
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // wrap around edges
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.y < 0) this.y = canvas.height;
-      if (this.y > canvas.height) this.y = 0;
-    }
-
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push(new Particle());
-    }
-  }
-
-  function connectParticles() {
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a; b < particles.length; b++) {
-        let dx = particles[a].x - particles[b].x;
-        let dy = particles[a].y - particles[b].y;
-        let distance = dx * dx + dy * dy;
-
-        if (distance < 10000) {
-          ctx.beginPath();
-          ctx.strokeStyle = "rgba(255,255,255,0.1)";
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  let mouse = {
-    x: null,
-    y: null,
-    radius: 120
-  };
-
-  window.addEventListener("mousemove", function (event) {
-    mouse.x = event.x;
-    mouse.y = event.y;
-  });
-
-  function mouseEffect() {
-    particles.forEach(p => {
-      let dx = mouse.x - p.x;
-      let dy = mouse.y - p.y;
-      let distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < mouse.radius) {
-        p.x -= dx / 20;
-        p.y -= dy / 20;
-      }
-    });
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
-
-    connectParticles();
-    mouseEffect();
-
-    requestAnimationFrame(animateParticles);
-  }
-
-  window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initParticles();
-  });
-
-  initParticles();
-  animateParticles();
-
-
-  // ADVANCED TYPING ANIMATION (MULTI-ROLE LOOP)
-  const roles = [
-    "Frontend Developer",
-    "Python Programmer",
-    "Tech Enthusiast",
-    "Future Software Engineer"
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingElement = document.getElementById("typing-text");
-
-  function typeEffect() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      charIndex--;
-    } else {
-      charIndex++;
-    }
-
-    typingElement.textContent = currentRole.substring(0, charIndex);
-
-    let speed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      speed = 1500; // pause at full text
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      speed = 500;
-    }
-
-    setTimeout(typeEffect, speed);
-  }
-
-  typeEffect();
-
+<script src="script.js">
 </script>
 
 </body>
