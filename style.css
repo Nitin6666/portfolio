@@ -226,8 +226,6 @@ body {
 
 .nav-links a:hover {
   color: cyan;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
 }
 
 /* MENU TOGGLE */
@@ -251,7 +249,7 @@ img{
   .menu-toggle.active {
   transform: rotate(90deg);
   transition: 0.3s;
-}
+  }
   .nav-links {
     position: absolute;
     top: 80px;
